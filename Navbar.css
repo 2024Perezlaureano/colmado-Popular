@@ -1,0 +1,6 @@
+/* css/style.css */
+.navbar {
+    background-color: #ffc107; /* Amarillo dorado */
+    /* o */
+    background: linear-gradient(to right, #00b09b, #96c93d); /* Degradado */
+}

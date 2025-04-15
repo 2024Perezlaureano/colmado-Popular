@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Popular CoL</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/FaviconCol.png" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Oswald:wght@600&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="Navbar.css">
+    <link rel="stylesheet" href="body.css">
+    <link rel="stylesheet" href="footer.section.css">
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-secondary navbar-dark sticky-top py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
+        <a href="index.html" class="navbar-brand ms-4 ms-lg-0">
+            <h1 class="mb-0 text-primary text-uppercase"> <img src="img/LogoTienda.png" style="border-radius: 30px; max-width:100px;position: relative; right: 20px;" alt="Logo tienda">Col. Popular</h1>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="index.html" class="nav-item nav-link active">Inicio</a>
+                <a href="service.html" class="nav-item nav-link">Productos</a>
+                <a href="about.html" class="nav-item nav-link">Nosotros</a>
+                <a href="contact.html" class="nav-item nav-link">Contactanos</a>
+            </div>
+            <a href="Pedidos.html" class="btn btn-primary rounded-0 py-2 px-lg-4 d-none d-lg-block"><i class="fa-solid fa-cart-shopping"></i></a>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+     <!-- Service Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <h1 class="text-uppercase">Destacados</h1>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item position-relative overflow-hidden bg-dark d-flex h-100 p-5 ps-0">
+                        <div class="ps-4">
+                            <h3 class="text-uppercase mb-3">Arroz</h3>
+                            <img style="display: block; position: relative; left:100px ;" src="img/Arroz.png" width="150px" alt="">
+                            <span class="text-uppercase text-primary">Lb 40$</span>
+                        </div>
+                        <button class="btn btn-square" onclick="agregarAlCarrito('Salami', 40)">
+                            <i class="fa-solid fa-cart-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item position-relative overflow-hidden bg-dark d-flex h-100 p-5 ps-0">
+                        <div class="ps-4">
+                            <h3 class="text-uppercase mb-3">Habichuela</h3>
+                            <img style="display: block; position: relative; left:100px ;" src="img/Habichuela.png" width="150px" alt="">
+                            <span class="text-uppercase text-primary">Lb 60$</span>
+                        </div>
+                        <button class="btn btn-square" onclick="agregarAlCarrito('Salami', 40)">
+                            <i class="fa-solid fa-cart-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item position-relative overflow-hidden bg-dark d-flex h-100 p-5 ps-0">
+                        <div class="ps-4">
+                            <h3 class="text-uppercase mb-3">Aceite</h3>
+                            <img style="display: block; position: relative; left:100px ;" src="img/Aceite.png" width="150px" alt="">
+                            <span class="text-uppercase text-primary">1gL 250$</span>
+                        </div>
+                        <button class="btn btn-square" onclick="agregarAlCarrito('Salami', 40)">
+                            <i class="fa-solid fa-cart-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item position-relative overflow-hidden bg-dark d-flex h-100 p-5 ps-0">
+                        <div class="ps-4">
+                            <h3 class="text-uppercase mb-3">Azucar</h3>
+                            <img style="display: block; position: relative; left:100px ;" src="img/Azucar.png" width="150px" alt="">
+                            <span class="text-uppercase text-primary">Lb 35$</span>
+                        </div>
+                        <button class="btn btn-square" onclick="agregarAlCarrito('Salami', 40)">
+                            <i class="fa-solid fa-cart-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item position-relative overflow-hidden bg-dark d-flex h-100 p-5 ps-0">
+                        <div class="ps-4">
+                            <h3 class="text-uppercase mb-3">Huevos</h3>
+                            <img style="display: block; position: relative; left:100px ;" src="img/Huevos.png" width="150px" alt="">
+                            <span class="text-uppercase text-primary">Unidad 10$</span>
+                        </div>
+                        <button class="btn btn-square" onclick="agregarAlCarrito('Salami', 40)">
+                            <i class="fa-solid fa-cart-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item position-relative overflow-hidden bg-dark d-flex h-100 p-5 ps-0">
+                        <div class="ps-4">
+                            <h3 class="text-uppercase mb-3">Pan</h3>
+                            <img style="display: block; position: relative; left:100px ;" src="img/Pan.png" width="150px" alt="">
+                            <span class="text-uppercase text-primary">Unidad 15$</span>
+                        </div>
+                        <button class="btn btn-square" onclick="agregarAlCarrito('Salami', 40)">
+                            <i class="fa-solid fa-cart-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item position-relative overflow-hidden bg-dark d-flex h-100 p-5 ps-0">
+                        <div class="ps-4">
+                            <h3 class="text-uppercase mb-3">Salami</h3>
+                            <img style="display: block; position: relative; left:100px ;" src="img/Salami.png" width="150px" alt="">
+                            <span class="text-uppercase text-primary">Lb 150$</span>
+                        </div>
+                        <button class="btn btn-square" onclick="agregarAlCarrito('Salami', 40)">
+                            <i class="fa-solid fa-cart-plus"></i>
+                        </button>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+    <!-- finaliza servicios -->
+
+    <!-- About Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="d-flex flex-column">
+                        <img class="img-fluid w-75 align-self-end" src="img/Carrito-2.png" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                    <p class="d-inline-block bg-secondary text-primary py-1 px-4">Nosotros</p>
+                    <h1 class="text-uppercase mb-4">Más que un simple pedido. ¡Aprende más sobre nosotros!</h1>
+                    <p></p>
+                    <p class="mb-4"></p>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <h3 class="text-uppercase mb-3">Mision</h3>
+                            <p class="mb-0">Proporcionar a nuestros clientes una experiencia de compra en línea conveniente, rápida y confiable, ofreciendo una amplia variedad de productos de alta calidad y precios competitivos.
+                                Satisfacer las necesidades de nuestros clientes, garantizando entregas rápidas y un servicio al cliente excepcional.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h3 class="text-uppercase mb-3">Vision</h3>
+                            <p class="mb-0">Ser el colmado en línea líder en nuestra comunidad, reconocido por nuestra calidad, variedad y servicio excepcional.
+                                Expandir nuestro alcance a nuevas áreas geográficas, llevando nuestros productos a más hogares.
+                                Innovar continuamente, incorporando nuevas tecnologías y servicios para mejorar la experiencia de compra de nuestros clientes.
+                                Crear una comunidad en línea donde los clientes puedan descubrir nuevos productos, compartir recetas y conectarse entre sí.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+    <!-- Working Hours Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-0">
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="h-100">
+                        <img class="img-fluid h-100" src="img/horas de trabajo.png" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                    <div class="bg-dark h-100 d-flex flex-column justify-content-center p-5">
+                        <p class="d-inline-flex bg-secondary text-primary py-1 px-4 me-auto">Horas de Trabajos</p>
+                        <h1 class="text-uppercase mb-4">Compra desde la comodidad de tu hogar, ¡sin filas ni estrés!</h1>
+                        <div>
+                            <div class="d-flex justify-content-between border-bottom py-2">
+                                <h6 class="text-uppercase mb-0">Lunes</h6>
+                                <span class="text-uppercase">8:30 - 21:00</span>
+                            </div>
+                            <div class="d-flex justify-content-between border-bottom py-2">
+                                <h6 class="text-uppercase mb-0">Martes</h6>
+                                <span class="text-uppercase">8:30 - 21:00</span>
+                            </div>
+                            <div class="d-flex justify-content-between border-bottom py-2">
+                                <h6 class="text-uppercase mb-0">Miercoles</h6>
+                                <span class="text-uppercase">8:30 - 21:00</span>
+                            </div>
+                            <div class="d-flex justify-content-between border-bottom py-2">
+                                <h6 class="text-uppercase mb-0">Jueves</h6>
+                                <span class="text-uppercase">8:30 - 21:00</span>
+                            </div>
+                            <div class="d-flex justify-content-between border-bottom py-2">
+                                <h6 class="text-uppercase mb-0">Friday</h6>
+                                <span class="text-uppercase">8:30 - 21:00</span>
+                            </div>
+                            <div class="d-flex justify-content-between py-2">
+                                <h6 class="text-uppercase mb-0">Sabado / Domingo</h6>
+                                <span class="text-uppercase text-primary">7:00 - 23:00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Working Hours End -->
+
+
+    <!-- Testimonial Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <p class="d-inline-block bg-dark text-primary py-1 px-4">Testimonial</p>
+                <h1 class="text-uppercase">Valoraciones de nuestros clientes</h1>
+            </div>
+            <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
+                <div class="testimonial-item text-center" data-dot="<img class='img-fluid' src='img/Laura rodriguez.png' alt=''>">
+                    <h4 class="text-uppercase">Laura Rodríguez</h4>
+                    <p class="text-primary">Diseñadora Gráfica</p>
+                    <span class="fs-5">¡La calidad de los productos es excepcional. El envío fue rápido y todo llegó en perfecto estado. ¡Muy recomendable!</span>
+                </div>
+                <div class="testimonial-item text-center" data-dot="<img class='img-fluid' src='img/carlos perez.png' alt=''>">
+                    <h4 class="text-uppercase">Carlos Pérez </h4>
+                    <p class="text-primary">Chef Profesional</p>
+                    <span class="fs-5">Encontré ingredientes únicos que no consigo en otros lugares. La frescura y el sabor son incomparables. ¡Mi cocina lo agradece!</span>
+                </div>
+                <div class="testimonial-item text-center" data-dot="<img class='img-fluid' src='img/Ana martines.png' alt=''>">
+                    <h4 class="text-uppercase">Ana Martínez</h4>
+                    <p class="text-primary">Estudiante universitaria</p>
+                    <span class="fs-5">Los precios son muy accesibles y la variedad es increíble. Hice mi pedido en línea y llegó a mi puerta en poco tiempo. ¡Excelente servicio!</span>
+                </div>
+                <div class="testimonial-item text-center" data-dot="<img class='img-fluid' src='img/Sofia Ramirez.png' alt=''>">
+                    <h4 class="text-uppercase">Sofia Ramirez</h4>
+                    <p class="text-primary">Emprendedora</p>
+                    <span class="fs-5">Me encanta la facilidad para hacer pedidos desde la app. Los productos son de alta calidad y siempre hay ofertas interesantes. ¡Mi colmado favorito!</span>
+                </div>
+            </div>      
+        </div>
+    </div>
+    <!-- Testimonial End -->
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-secondary text-light footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-4 col-md-6">
+                    <h4 class="text-uppercase mb-4">Contactanos</h4>
+                    <div class="d-flex align-items-center mb-2">
+                        <div class="btn-square bg-dark flex-shrink-0 me-3">
+                            <span class="fa fa-map-marker-alt text-primary"></span>
+                        </div>
+                        <span>Calle Antonio Guzman #90</span>
+                    </div>
+                    <div class="d-flex align-items-center mb-2">
+                        <div class="btn-square bg-dark flex-shrink-0 me-3">
+                            <span class="fa fa-phone-alt text-primary"></span>
+                        </div>
+                        <span>+1(849-284-6693)</span>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <div class="btn-square bg-dark flex-shrink-0 me-3">
+                            <span class="fa fa-envelope-open text-primary"></span>
+                        </div>
+                        <span>michaelperezlaureano@gmail.com</span>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h4 class="text-uppercase mb-4">Enlaces rapidos</h4>
+                    <a class="btn btn-link" href="about.html">Sobre nosotros</a>
+                    <a class="btn btn-link" href="contact.html">Contáctanos</a>
+                    <a class="btn btn-link" href="service.html">Nuestros servicios</a>
+                    <a class="btn btn-link" href="team.html">Términos y Condiciones</a>
+                    <a class="btn btn-link" href="testimonial.html">Soporte</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Información adicional</h4>
+                    <p>Horario: L-V 8:30 - 21:00, S-D 7:00 - 23:00</p>
+                    <p>Métodos de pago: Efectivo, Tarjeta, Transferencia</p>
+                    <p>Envío: Entrega a domicilio en 24 horas</p>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        &copy; <a class="border-bottom" href="404.html">El Nazareno</a>, Todos los derechos reservados.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+    <script>
+        function agregarAlCarrito(nombre, precio) {
+            const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+            const existente = carrito.find(item => item.nombre === nombre);
+            
+            if (existente) {
+                existente.cantidad++;
+            } else {
+                carrito.push({
+                    nombre: nombre,
+                    precio: precio,
+                    cantidad: 1
+                });
+            }
+            
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+            alert('Producto agregado al carrito!');
+        }
+        </script>
+
+    <!-- Back to Top -->
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

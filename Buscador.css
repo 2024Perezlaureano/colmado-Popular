@@ -1,0 +1,15 @@
+#categoryFilter {
+    border-radius: 15px;
+    text-align: center;
+    padding: 8px;
+    background: #1e2022;
+    color: white;
+    border: 1px solid #ffc107;
+}
+
+#searchInput {
+    padding: 10px;
+    border: 2px solid #ffc107;
+    background: #272b30;
+    color: white;
+}

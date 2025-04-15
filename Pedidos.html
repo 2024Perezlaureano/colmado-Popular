@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Carrito de Compra - CoL Popular</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    
+    <!-- Todos los enlaces a CSS existentes -->
+    <link href="img/FaviconCol.png" rel="icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Oswald:wght@600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="Navbar.css">
+    <link rel="stylesheet" href="body.css">
+    <link rel="stylesheet" href="footer.section.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<style>
+    #map { 
+        height: 300px;
+        border-radius: 10px;
+        margin: 20px 0;
+    }
+    .leaflet-top.leaflet-right {
+        margin-top: 70px;
+    }
+    #addressSearch {
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1000;
+        width: 80%;
+        max-width: 500px;
+    }
+</style>
+    
+    <style>
+        .cart-item {
+            background: #1a1a1a;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .quantity-controls button {
+            width: 35px;
+            height: 35px;
+            border-radius: 50% !important;
+        }
+        
+        #checkoutForm input {
+            background: #2a2a2a;
+            border: 1px solid #3a3a3a;
+            color: white;
+        }
+        
+        .total-box {
+            background: #2ECC71;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Spinner y Navbar (igual que en service.html) -->
+    <nav class="navbar navbar-expand-lg bg-secondary navbar-dark sticky-top py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
+        <a href="index.html" class="navbar-brand ms-4 ms-lg-0">
+            <h1 class="mb-0 text-primary text-uppercase"> <img src="img/LogoTienda.png" style="border-radius: 30px; max-width:100px;position: relative; right: 20px;" alt="Logo tienda">Col. Popular</h1>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="index.html" class="nav-item nav-link">Inicio</a>
+                <a href="service.html" class="nav-item nav-link">Productos</a>
+                <a href="about.html" class="nav-item nav-link">Nosotros</a>
+                <a href="contact.html" class="nav-item nav-link">Contactame</a>
+            </div>
+            <a href="404.html" class="btn btn-primary rounded-0 py-2 px-lg-4 d-none d-lg-block active"><i class="fa-solid fa-cart-shopping"></i></a>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container text-center py-5">
+            <h1 class="display-3 text-white text-uppercase mb-3 animated slideInDown">Tu Carrito</h1>
+            <nav aria-label="breadcrumb animated slideInDown">
+                <ol class="breadcrumb justify-content-center text-uppercase mb-0">
+                    <li class="breadcrumb-item"><a class="text-white" href="index.html">Inicio</a></li>
+                    <li class="breadcrumb-item text-primary active" aria-current="page">Carrito</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Carrito Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div id="carritoLista"></div>
+            
+            <div class="total-box text-center mb-4">
+                <strong>Total a Pagar:</strong> RD$ <span id="totalCarrito">0.00</span>
+            </div>
+            
+            <div class="card bg-dark p-4">
+                <h3 class="text-primary mb-4">Información de Envío</h3>
+                <form id="checkoutForm">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <input type="text" id="nombre" class="form-control" placeholder="Nombre Completo" required>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="tel" id="telefono" class="form-control" placeholder="Teléfono" required>
+                        </div>
+                        <div class="col-12">
+                            <input type="email" id="email" class="form-control" placeholder="Correo Electrónico" required>
+                        </div>
+                        <div class="col-12">
+                            <div class="col-12">
+                                <textarea id="direccion" class="form-control" rows="3" placeholder="Dirección Completa" required></textarea>
+                            </div>
+                            <div class="col-12 position-relative">
+                                <input type="text" id="addressSearch" class="form-control mb-2" placeholder="Buscar dirección...">
+                                <div id="map"></div>
+                                <input type="hidden" id="coordinates" name="coordinates" required>
+                                <small class="text-muted">Haz clic en el mapa para seleccionar tu ubicación exacta</small>
+                            </div>
+                        </div>
+                        <div class="col-12 text-center">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-paper-plane me-2"></i>Finalizar Compra
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer (igual que en service.html) -->
+<!-- Footer Start -->
+<div class="container-fluid bg-secondary text-light footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-lg-4 col-md-6">
+                <h4 class="text-uppercase mb-4">Contactanos</h4>
+                <div class="d-flex align-items-center mb-2">
+                    <div class="btn-square bg-dark flex-shrink-0 me-3">
+                        <span class="fa fa-map-marker-alt text-primary"></span>
+                    </div>
+                    <span>Calle Antonio Guzman #90</span>
+                </div>
+                <div class="d-flex align-items-center mb-2">
+                    <div class="btn-square bg-dark flex-shrink-0 me-3">
+                        <span class="fa fa-phone-alt text-primary"></span>
+                    </div>
+                    <span>+1(849-284-6693)</span>
+                </div>
+                <div class="d-flex align-items-center">
+                    <div class="btn-square bg-dark flex-shrink-0 me-3">
+                        <span class="fa fa-envelope-open text-primary"></span>
+                    </div>
+                    <span>michaelperezlaureano@gmail.com</span>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <h4 class="text-uppercase mb-4">Enlaces rapidos</h4>
+                <a class="btn btn-link" href="about.html">Sobre nosotros</a>
+                <a class="btn btn-link" href="contact.html">Contáctanos</a>
+                <a class="btn btn-link" href="service.html">Nuestros servicios</a>
+                <a class="btn btn-link" href="team.html">Términos y Condiciones</a>
+                <a class="btn btn-link" href="testimonial.html">Soporte</a>
+            </div>
+            <div class="footer-section">
+                <h4>Información adicional</h4>
+                <p>Horario: L-V 8:30 - 21:00, S-D 7:00 - 23:00</p>
+                <p>Métodos de pago: Efectivo, Tarjeta, Transferencia</p>
+                <p>Envío: Entrega a domicilio en 24 horas</p>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="copyright">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    &copy; <a class="border-bottom" href="#">El Nazareno</a>, Todos los derechos reservados.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- foooter end -->
+   
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<!-- Agrega este script después de Leaflet.js -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+<script>
+// Configura EmailJS
+(function() {
+    emailjs.init('WaEfBXf4C8Y0z6LAV'); // Registrate en emailjs.com para obtener tu ID
+})();
+
+document.getElementById('checkoutForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const pedido = {
+        nombre: document.getElementById('nombre').value,
+        telefono: document.getElementById('telefono').value,
+        email: document.getElementById('email').value,
+        direccion: document.getElementById('direccion').value,
+        coordenadas: document.getElementById('coordinates').value,
+        productos: carrito.map(item => 
+            `${item.nombre} - Cantidad: ${item.cantidad} - RD$${item.precio * item.cantidad}`
+        ).join('\n'),
+        total: document.getElementById('totalCarrito').textContent
+    };
+
+    emailjs.send('service_jnba1zg', 'template_wm1o9qk', pedido)
+        .then(() => {
+            alert('Pedido enviado correctamente. ¡Gracias!');
+            // Vaciar carrito
+            carrito = [];
+            localStorage.removeItem('carrito');
+            actualizarCarrito();
+            document.getElementById('checkoutForm').reset();
+        }, (error) => {
+            console.error('Error al enviar:', error);
+            alert('Error al enviar el pedido. Inténtalo de nuevo.');
+        });
+});
+</script>
+<script>
+// Código del mapa mejorado
+let map;
+let marker;
+
+function initMap() {
+    // 1. Verificar que el contenedor existe
+    if (!document.getElementById('map')) return;
+    
+    // 2. Inicializar mapa con vista de República Dominicana
+    map = L.map('map', {
+        center: [18.4861, -69.9312], // Coordenadas de Santo Domingo
+        zoom: 13
+    });
+
+    // 3. Capa de OpenStreetMap
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+    // 4. Agregar marcador inicial
+    marker = L.marker(map.getCenter(), {
+        draggable: true
+    }).addTo(map);
+
+    // 5. Actualizar coordenadas al mover marcador
+    marker.on('dragend', updateCoordinates);
+
+    // 6. Actualizar al hacer clic en el mapa
+    map.on('click', function(e) {
+        marker.setLatLng(e.latlng);
+        updateCoordinates();
+    });
+
+    // 7. Vincular búsqueda
+    document.getElementById('addressSearch').addEventListener('input', function(e) {
+        searchAddress(e.target.value);
+    });
+}
+
+function updateCoordinates() {
+    const coords = marker.getLatLng();
+    document.getElementById('coordinates').value = `${coords.lat.toFixed(6)},${coords.lng.toFixed(6)}`;
+}
+
+// Inicializar cuando el DOM esté listo
+document.addEventListener('DOMContentLoaded', initMap);
+</script>
+        <script>
+            // Carrito en localStorage
+            let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+            
+            function actualizarCarrito() {
+                const carritoLista = document.getElementById('carritoLista');
+                const totalElement = document.getElementById('totalCarrito');
+                let total = 0;
+                
+                carritoLista.innerHTML = '';
+                
+                carrito.forEach((item, index) => {
+                    const precioTotal = item.precio * item.cantidad;
+                    total += precioTotal;
+                    
+                    const itemHTML = `
+                        <div class="cart-item">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <h5 class="text-primary">${item.nombre}</h5>
+                                    <p class="mb-0">RD$ ${item.precio} x unidad</p>
+                                </div>
+                                <div class="col-md-4 text-center quantity-controls">
+                                    <button class="btn btn-sm btn-primary" onclick="modificarCantidad(${index}, -1)">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <span class="mx-3">${item.cantidad}</span>
+                                    <button class="btn btn-sm btn-primary" onclick="modificarCantidad(${index}, 1)">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                                <div class="col-md-4 text-end">
+                                    <p class="mb-0">RD$ ${precioTotal.toFixed(2)}</p>
+                                    <button class="btn btn-link text-danger" onclick="eliminarItem(${index})">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    carritoLista.innerHTML += itemHTML;
+                });
+                
+                totalElement.textContent = total.toFixed(2);
+                localStorage.setItem('carrito', JSON.stringify(carrito));
+            }
+            
+            function modificarCantidad(index, cambio) {
+                carrito[index].cantidad += cambio;
+                
+                if (carrito[index].cantidad < 1) {
+                    carrito.splice(index, 1);
+                }
+                
+                actualizarCarrito();
+            }
+            
+            function eliminarItem(index) {
+                carrito.splice(index, 1);
+                actualizarCarrito();
+            }
+            
+            document.getElementById('checkoutForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const productos = carrito.map(item => 
+                    `${item.nombre} - Cantidad: ${item.cantidad} - RD$${item.precio * item.cantidad}`
+                ).join('%0A');
+                
+                const cuerpoCorreo = encodeURIComponent(
+                    `Detalles del Pedido:%0A%0A${productos}%0A%0ATotal: RD$${document.getElementById('totalCarrito').textContent}%0A%0ADatos del Cliente:%0A${Array.from(this.elements)
+                        .map(el => `${el.placeholder}: ${el.value}`)
+                        .join('%0A')}`
+                );
+                
+                window.location.href = `mailto:michaelperezlaureano@gmail.com?subject=Nuevo Pedido Colmado&body=${cuerpoCorreo}`;
+                
+                // Vaciar carrito después de enviar
+                carrito = [];
+                localStorage.removeItem('carrito');
+                actualizarCarrito();
+                
+                alert('¡Pedido enviado! Revisa tu correo para confirmar.');
+            });
+            
+            // Inicializar
+            actualizarCarrito();
+        </script>
+</body>
+</html>
